@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Catatan Keuangan</title>
+</head>
+<body>
+  <header class="atas">
+    <div>
+      <p class="kecil">Catatan keuangan</p>
+      <strong id="pemilik" class="merek">Nama Kamu</strong>
+    </div>
+    <div class="saldo">
+      <p class="kecil">Saldo</p>
+      <strong id="saldo">Rp 0</strong>
+    </div>
+  </header>
+
+  <main>
+    <p id="status-db" class="status" role="status">Menyiapkan database…</p>
+
+    <section class="kartu">
+      <h2>Catat transaksi</h2>
+      <form id="form-transaksi" novalidate>
+        <label>Tanggal <input id="isi-tanggal" type="date"></label>
+        <label>Keterangan <input id="isi-keterangan" placeholder="mis. Makan siang"></label>
+        <label>Jumlah (Rp) <input id="isi-jumlah" inputmode="numeric" placeholder="mis. 25000"></label>
+        <label>Jenis
+          <select id="isi-jenis">
+            <option value="keluar">Pengeluaran</option>
+            <option value="masuk">Pemasukan</option>
+          </select>
+        </label>
+        <label>Kategori <select id="isi-kategori"><option value="">Tanpa kategori</option></select></label>
+        <div class="aksi">
+          <button type="submit">Simpan</button>
+          <button id="tombol-batal" type="button" class="sekunder">Batalkan aksi terakhir</button>
+        </div>
+        <ul id="pesan-form" class="pesan" role="status"></ul>
+      </form>
+    </section>
+
+    <section class="kartu">
+      <div class="judul-bagian">
+        <h2>Transaksi</h2>
+        <input id="cari" type="search" placeholder="Cari keterangan…" aria-label="Cari transaksi">
+      </div>
+      <div class="gulir">
+        <table>
+          <thead>
+            <tr>
+              <th><button type="button" data-kolom="tanggal">Tanggal</button></th>
+              <th><button type="button" data-kolom="keterangan">Keterangan</button></th>
+              <th>Kategori</th>
+              <th class="angka"><button type="button" data-kolom="jumlah">Jumlah</button></th>
+            </tr>
+          </thead>
+          <tbody id="isi-tabel"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="dua-kolom">
+      <div class="kartu">
+        <h2>Pengeluaran per kategori</h2>
+        <ul id="per-kategori" class="per-kategori"></ul>
+        <ul id="peringatan" class="peringatan"></ul>
+      </div>
+      <div class="kartu">
+        <h2>Laporan bulanan</h2>
+        <label>Bulan <input id="pilih-bulan" type="month"></label>
+        <dl id="laporan" class="laporan"></dl>
+      </div>
+    </section>
+
+    <section class="kartu">
+      <div class="judul-bagian">
+        <h2>Ekspor</h2>
+        <button id="tombol-ekspor" type="button" class="sekunder">Buat CSV</button>
+      </div>
+      <textarea id="hasil-ekspor" rows="5" readonly placeholder="Hasil ekspor CSV tampil di sini."></textarea>
+    </section>
+  </main>
+  
+</body>
+</html>
